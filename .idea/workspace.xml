@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dd4513d-a91e-492b-9c8f-c1389ea617d1" name="Changes" comment="" />
+    <list default="true" id="6dd4513d-a91e-492b-9c8f-c1389ea617d1" name="Changes" comment="项目初始化">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,7 +63,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
   </component>
   <component name="ReaderModeSettings">
     <option name="enabled" value="false" />
@@ -108,8 +110,16 @@
       <workItem from="1647701358164" duration="2659000" />
       <workItem from="1647704055406" duration="505000" />
       <workItem from="1647704577953" duration="19169000" />
-      <workItem from="1647825588639" duration="296000" />
+      <workItem from="1647825588639" duration="1284000" />
     </task>
+    <task id="LOCAL-00001" summary="项目初始化">
+      <created>1647826156814</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1647826156814</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -125,6 +135,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="项目初始化" />
+    <option name="LAST_COMMIT_MESSAGE" value="项目初始化" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
