@@ -5,7 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6dd4513d-a91e-492b-9c8f-c1389ea617d1" name="Changes" comment="项目初始化">
+      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/ElasticSearchClientConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/es/entity/CreateIndexRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/service/impl/EsApiServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/ElasticSearchConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/es/EsOrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/es/EsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/controller/EsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/controller/VicEsApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/service/EsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/service/EsApiService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/service/impl/EsServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch-service/target/classes/com/vic/es/config/ElasticSearchConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch-service/target/classes/com/vic/es/config/es/EsOrderService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch-service/target/classes/com/vic/es/controller/EsController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch-service/target/classes/com/vic/es/service/EsService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch-service/target/classes/com/vic/es/service/impl/EsServiceImpl.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +58,9 @@
     <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="26bnrpf7JzafGC3813pydQCyIAi" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -63,7 +79,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+    <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
   <component name="ReaderModeSettings">
     <option name="enabled" value="false" />
@@ -110,7 +126,12 @@
       <workItem from="1647701358164" duration="2659000" />
       <workItem from="1647704055406" duration="505000" />
       <workItem from="1647704577953" duration="19169000" />
-      <workItem from="1647825588639" duration="1284000" />
+      <workItem from="1647825588639" duration="2922000" />
+      <workItem from="1647829226219" duration="1463000" />
+      <workItem from="1647865327848" duration="1328000" />
+      <workItem from="1647952005135" duration="877000" />
+      <workItem from="1647954009027" duration="3003000" />
+      <workItem from="1648132001927" duration="8271000" />
     </task>
     <task id="LOCAL-00001" summary="项目初始化">
       <created>1647826156814</created>
@@ -139,6 +160,17 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="项目初始化" />
     <option name="LAST_COMMIT_MESSAGE" value="项目初始化" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/es/EsService.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
