@@ -4,22 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dd4513d-a91e-492b-9c8f-c1389ea617d1" name="Changes" comment="项目初始化">
-      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/ElasticSearchClientConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/es/entity/CreateIndexRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/service/impl/EsApiServiceImpl.java" afterDir="false" />
+    <list default="true" id="6dd4513d-a91e-492b-9c8f-c1389ea617d1" name="Changes" comment="创建索引">
+      <change afterPath="$PROJECT_DIR$/common-base/src/main/java/com/vic/base/util/MapUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/es/entity/DocumentUserResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/es/entity/UserDocumentRequestVo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elasticsearch-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/ElasticSearchConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/es/EsOrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/es/EsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/controller/EsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/controller/VicEsApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/service/EsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/service/EsApiService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/service/impl/EsServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/elasticsearch-service/target/classes/com/vic/es/config/ElasticSearchConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/elasticsearch-service/target/classes/com/vic/es/config/es/EsOrderService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/elasticsearch-service/target/classes/com/vic/es/controller/EsController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/elasticsearch-service/target/classes/com/vic/es/service/EsService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/elasticsearch-service/target/classes/com/vic/es/service/impl/EsServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/ElasticSearchClientConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/ElasticSearchClientConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/es/EsConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/es/IndexConstant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/es/EsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/es/EsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/es/entity/CreateIndexRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/es/entity/IndexRequestVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/controller/VicEsApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/controller/VicEsApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/service/EsApiService.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/service/EsApiService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/service/impl/EsApiServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/service/impl/EsApiServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/resources/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/resources/application-dev.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch-service/target/classes/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/target/classes/application-dev.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch-service/target/classes/com/vic/es/config/es/EsConstant.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,6 +93,9 @@
       <recent name="D:\workspace\vic-service\common-base\src\main\java\com\vic\base" />
       <recent name="D:\workspace\vic-service\elasticsearch-service\src\main\java\com\vic\es\controller" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.vic.es.config.es.entity" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="EsServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
@@ -131,7 +133,7 @@
       <workItem from="1647865327848" duration="1328000" />
       <workItem from="1647952005135" duration="877000" />
       <workItem from="1647954009027" duration="3003000" />
-      <workItem from="1648132001927" duration="8271000" />
+      <workItem from="1648132001927" duration="23648000" />
     </task>
     <task id="LOCAL-00001" summary="项目初始化">
       <created>1647826156814</created>
@@ -140,7 +142,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647826156814</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="创建索引">
+      <created>1648221676415</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1648221676415</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -159,21 +168,16 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="项目初始化" />
-    <option name="LAST_COMMIT_MESSAGE" value="项目初始化" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/es/EsService.java</url>
-          <line>47</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="创建索引" />
+    <option name="LAST_COMMIT_MESSAGE" value="创建索引" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/vic_service$EsServiceApplication.ic" NAME="EsServiceApplication Coverage Results" MODIFIED="1648263291811" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.vic.es.*</FILTER>
+    </SUITE>
   </component>
 </project>

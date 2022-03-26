@@ -1,7 +1,11 @@
 package com.vic.es.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.vic.es.config.es.EsService;
-import com.vic.es.config.es.entity.CreateIndexRequest;
+import com.vic.es.config.es.IndexConstant;
+import com.vic.es.config.es.entity.DocumentUserResponse;
+import com.vic.es.config.es.entity.IndexRequestVo;
+import com.vic.es.config.es.entity.UserDocumentRequestVo;
 import com.vic.es.entity.EsOrderDataQueryVo;
 import com.vic.es.entity.OrderTrendResponseVo;
 import com.vic.es.service.EsApiService;
@@ -19,8 +23,28 @@ public class EsApiServiceImpl implements EsApiService {
     }
 
     @Override
-    public Boolean createIndex(CreateIndexRequest request) {
+    public String createIndex(IndexRequestVo request) {
         return esService.createIndex(request.getIndex());
+    }
+
+    @Override
+    public Boolean isExistsIndex(IndexRequestVo request) {
+        return esService.isExistsIndex(request.getIndex());
+    }
+
+    @Override
+    public Boolean deleteIndex(IndexRequestVo request) {
+        return esService.deleteIndex(request.getIndex());
+    }
+
+    @Override
+    public String addDocument(UserDocumentRequestVo request) {
+        return esService.addDocument(IndexConstant.VIC_INDEX, JSON.toJSONString(request));
+    }
+
+    @Override
+    public DocumentUserResponse getDocument(UserDocumentRequestVo request) {
+        return esService.getDocument(IndexConstant.VIC_INDEX);
     }
 
     @Override

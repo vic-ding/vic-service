@@ -11,34 +11,17 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ElasticSearchClientConfig {
 
-//    @Value("${order.elasticsearch.ip}")
-//    private String hostName;
-//
-//    @Value("${order.elasticsearch.port}")
-//    private int port;
-//
-//    @Value("${order.elasticsearch.userName}")
-//    private String userName;
-//
-//    @Value("${order.elasticsearch.password}")
-//    private String password;
+    @Value("${local.elasticsearch.hostName}")
+    private String hostName;
 
-//    @Bean
-//    public RestHighLevelClient orderClient() {
-//        CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
-//        credentialsProvider.setCredentials(AuthScope.ANY, new UsernamePasswordCredentials(userName, password));
-//        return new RestHighLevelClient(
-//                RestClient.builder(
-//                        new HttpHost(hostName, port)).setHttpClientConfigCallback(httpClientBuilder -> httpClientBuilder.setDefaultCredentialsProvider(credentialsProvider))
-//        );
-//    }
-
+    @Value("${local.elasticsearch.port}")
+    private int port;
 
     @Bean
     public RestHighLevelClient localClient() {
         return new RestHighLevelClient(
                 RestClient.builder(
-                        new HttpHost("127.0.0.1", 9200, "http")
+                        new HttpHost(hostName, port,"http")
                 )
         );
     }

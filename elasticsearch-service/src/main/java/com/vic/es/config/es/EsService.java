@@ -1,32 +1,28 @@
 package com.vic.es.config.es;
 
 
-import com.alibaba.fastjson.JSONObject;
-import com.vic.es.config.es.entity.EsGroupByDataResponse;
+import com.alibaba.fastjson.JSON;
+import com.vic.base.util.MapUtils;
+import com.vic.es.config.es.entity.DocumentUserResponse;
 import lombok.extern.slf4j.Slf4j;
-import org.elasticsearch.action.search.SearchRequest;
-import org.elasticsearch.action.search.SearchResponse;
-import org.elasticsearch.action.support.IndicesOptions;
+import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest;
+import org.elasticsearch.action.get.GetRequest;
+import org.elasticsearch.action.get.GetResponse;
+import org.elasticsearch.action.index.IndexRequest;
+import org.elasticsearch.action.index.IndexResponse;
+import org.elasticsearch.action.support.master.AcknowledgedResponse;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.client.indices.CreateIndexRequest;
 import org.elasticsearch.client.indices.CreateIndexResponse;
-import org.elasticsearch.index.query.BoolQueryBuilder;
-import org.elasticsearch.script.Script;
-import org.elasticsearch.search.aggregations.Aggregation;
-import org.elasticsearch.search.aggregations.AggregationBuilders;
-import org.elasticsearch.search.aggregations.bucket.terms.Terms;
-import org.elasticsearch.search.aggregations.bucket.terms.TermsAggregationBuilder;
-import org.elasticsearch.search.builder.SearchSourceBuilder;
+import org.elasticsearch.client.indices.GetIndexRequest;
+import org.elasticsearch.common.xcontent.XContentType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.Map;
 
 @Service
 @Slf4j
@@ -42,18 +38,107 @@ public class EsService {
 
     /**
      * 创建索引
+     *
      * @param index 索引名称
      */
-    public boolean createIndex(String index)  {
-        CreateIndexRequest createIndexRequest = new CreateIndexRequest(index);
-        CreateIndexResponse createIndexResponse = null;
+    public String createIndex(String index) {
+        boolean existsIndex = isExistsIndex(index);// 判断索引是否存在
+        String response = "";
+        if (existsIndex) {
+            response = "索引已存在，无需创建";
+        } else {
+            CreateIndexRequest createIndexRequest = new CreateIndexRequest(index);
+            try {
+                CreateIndexResponse createIndexResponse = localClient.indices().create(createIndexRequest, RequestOptions.DEFAULT);
+                if (createIndexResponse.isAcknowledged()) {
+                    response = "创建索引成功";
+                } else {
+                    response = "创建索引失败";
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return response;
+    }
+
+    /**
+     * 判断索引是否存在
+     *
+     * @param index 索引名称
+     */
+    public boolean isExistsIndex(String index) {
+        GetIndexRequest getIndexRequest = new GetIndexRequest(index);
+        boolean response = false;
         try {
-            createIndexResponse = localClient.indices().create(createIndexRequest, RequestOptions.DEFAULT);
+            response = localClient.indices().exists(getIndexRequest, RequestOptions.DEFAULT);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return Objects.requireNonNull(createIndexResponse).isAcknowledged();
+        return response;
     }
+
+    /**
+     * 删除索引
+     *
+     * @param index 索引名称
+     */
+    public boolean deleteIndex(String index) {
+        boolean existsIndex = isExistsIndex(index);// 判断索引是否存在
+        boolean response = false;
+        if (existsIndex) {
+            DeleteIndexRequest deleteIndexRequest = new DeleteIndexRequest(index);
+            AcknowledgedResponse acknowledgedResponse;
+            try {
+                acknowledgedResponse = localClient.indices().delete(deleteIndexRequest, RequestOptions.DEFAULT);
+                response = acknowledgedResponse.isAcknowledged();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return response;
+    }
+
+    /**
+     * 添加文档
+     *
+     * @param index 索引名称
+     */
+    public String addDocument(String index, String jsonString) {
+        String response = "";
+
+        IndexRequest indexRequest = new IndexRequest(index);
+        //indexRequest.id("1");
+        indexRequest.source(jsonString, XContentType.JSON);
+        try {
+            IndexResponse indexResponse = localClient.index(indexRequest, RequestOptions.DEFAULT);
+            response = JSON.toJSONString(indexResponse.status());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return response;
+    }
+
+    /**
+     * 获取文档
+     *
+     * @param index 索引名称
+     */
+    public DocumentUserResponse getDocument(String index) {
+        DocumentUserResponse response = new DocumentUserResponse();
+
+        GetRequest getRequest = new GetRequest(index, "1");
+        try {
+            GetResponse getResponse = localClient.get(getRequest, RequestOptions.DEFAULT);
+            Map<String, Object> sourceAsMap = getResponse.getSourceAsMap();
+            response = (DocumentUserResponse)MapUtils.mapToObject(sourceAsMap, DocumentUserResponse.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return response;
+    }
+
+
 
 
 //
