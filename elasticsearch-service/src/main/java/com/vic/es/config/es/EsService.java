@@ -2,21 +2,28 @@ package com.vic.es.config.es;
 
 
 import com.alibaba.fastjson.JSON;
-import com.vic.base.util.MapUtils;
-import com.vic.es.config.es.entity.DocumentUserResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.elasticsearch.ElasticsearchException;
+import org.elasticsearch.action.DocWriteResponse;
 import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest;
+import org.elasticsearch.action.bulk.BulkRequest;
+import org.elasticsearch.action.bulk.BulkResponse;
+import org.elasticsearch.action.delete.DeleteRequest;
+import org.elasticsearch.action.delete.DeleteResponse;
 import org.elasticsearch.action.get.GetRequest;
 import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.action.support.master.AcknowledgedResponse;
+import org.elasticsearch.action.update.UpdateRequest;
+import org.elasticsearch.action.update.UpdateResponse;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.client.indices.CreateIndexRequest;
 import org.elasticsearch.client.indices.CreateIndexResponse;
 import org.elasticsearch.client.indices.GetIndexRequest;
 import org.elasticsearch.common.xcontent.XContentType;
+import org.elasticsearch.rest.RestStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -124,21 +131,92 @@ public class EsService {
      *
      * @param index 索引名称
      */
-    public DocumentUserResponse getDocument(String index) {
-        DocumentUserResponse response = new DocumentUserResponse();
-
-        GetRequest getRequest = new GetRequest(index, "1");
+    public Map<String, Object> getDocument(String index, String id) {
+        GetRequest getRequest = new GetRequest(index, id);
+        Map<String, Object> sourceAsMap = null;
         try {
             GetResponse getResponse = localClient.get(getRequest, RequestOptions.DEFAULT);
-            Map<String, Object> sourceAsMap = getResponse.getSourceAsMap();
-            response = (DocumentUserResponse)MapUtils.mapToObject(sourceAsMap, DocumentUserResponse.class);
+            sourceAsMap = getResponse.getSourceAsMap();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return sourceAsMap;
+    }
+
+    /**
+     * 判断文档是否存在
+     *
+     * @param index 索引名称
+     */
+    public Boolean isExistsDocument(String index, String id) {
+        GetRequest getRequest = new GetRequest(index, id);
+        boolean response = false;
+        try {
+            response = localClient.exists(getRequest, RequestOptions.DEFAULT);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return response;
     }
 
+    /**
+     * 删除文档
+     *
+     * @param index 索引名称
+     */
+    public String deleteDocument(String index, String id) {
+        DeleteRequest deleteRequest = new DeleteRequest(index, id);
+        String response = "删除文档成功";
+        try {
+            DeleteResponse deleteResponse = localClient.delete(deleteRequest, RequestOptions.DEFAULT);
+            // 文档不存在的情况
+            if (deleteResponse.getResult() == DocWriteResponse.Result.NOT_FOUND) {
+                response = "文档不存在";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return response;
+    }
 
+    /**
+     * 更新文档
+     *
+     * @param index 索引名称
+     */
+    public String updateDocument(String index, String id, String jsonString) {
+        UpdateRequest updateRequest = new UpdateRequest(index, id).doc(jsonString, XContentType.JSON);
+        String response = "更新文档成功";
+
+        UpdateResponse updateResponse;
+        try {
+            try {
+                updateResponse = localClient.update(updateRequest, RequestOptions.DEFAULT);
+                log.info("更新文档成功,详细信息为 {}", JSON.toJSONString(updateResponse));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } catch (ElasticsearchException e) {
+            if (e.status() == RestStatus.NOT_FOUND) {
+                response = "索引不存在";
+            }
+        }
+        return response;
+    }
+
+    /**
+     * 批量添加文档
+     */
+    public Boolean bulkDocument(BulkRequest bulkRequest) {
+        boolean response = false;
+        try {
+            BulkResponse bulkResponse = localClient.bulk(bulkRequest, RequestOptions.DEFAULT);
+            response = bulkResponse.hasFailures();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return response;
+    }
 
 
 //

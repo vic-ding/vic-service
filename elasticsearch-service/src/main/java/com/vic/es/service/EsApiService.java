@@ -1,10 +1,6 @@
 package com.vic.es.service;
 
-import com.vic.es.config.es.entity.DocumentUserResponse;
-import com.vic.es.config.es.entity.IndexRequestVo;
-import com.vic.es.config.es.entity.UserDocumentRequestVo;
-import com.vic.es.entity.EsOrderDataQueryVo;
-import com.vic.es.entity.OrderTrendResponseVo;
+import com.vic.es.entity.*;
 
 
 public interface EsApiService {
@@ -15,10 +11,16 @@ public interface EsApiService {
 
     Boolean deleteIndex(IndexRequestVo request);
 
-    String addDocument(UserDocumentRequestVo request);
+    String addDocument(AddUserDocumentRequestVo request);
 
-    DocumentUserResponse getDocument(UserDocumentRequestVo request);
+    GetDocumentResponse getDocument(GetDocumentRequestVo request);
 
-    OrderTrendResponseVo queryGroupByData(EsOrderDataQueryVo queryVo);
+    Boolean isExistsDocument(IsExistsDocumentRequestVo request);
+
+    String deleteDocument(DeleteDocumentRequestVo request);
+
+    String updateDocument(UpdateDocumentRequestVo request);
+
+    String bulkDocument(BulkAddUserDocumentRequestDto request);
 
 }

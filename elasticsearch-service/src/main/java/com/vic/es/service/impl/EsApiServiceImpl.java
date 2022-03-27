@@ -1,16 +1,18 @@
 package com.vic.es.service.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.vic.base.util.MapUtils;
 import com.vic.es.config.es.EsService;
-import com.vic.es.config.es.IndexConstant;
-import com.vic.es.config.es.entity.DocumentUserResponse;
-import com.vic.es.config.es.entity.IndexRequestVo;
-import com.vic.es.config.es.entity.UserDocumentRequestVo;
-import com.vic.es.entity.EsOrderDataQueryVo;
-import com.vic.es.entity.OrderTrendResponseVo;
+import com.vic.es.entity.*;
 import com.vic.es.service.EsApiService;
+import org.elasticsearch.action.bulk.BulkRequest;
+import org.elasticsearch.action.index.IndexRequest;
+import org.elasticsearch.common.xcontent.XContentType;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Map;
 
 @Service
 public class EsApiServiceImpl implements EsApiService {
@@ -38,34 +40,64 @@ public class EsApiServiceImpl implements EsApiService {
     }
 
     @Override
-    public String addDocument(UserDocumentRequestVo request) {
-        return esService.addDocument(IndexConstant.VIC_INDEX, JSON.toJSONString(request));
+    public String addDocument(AddUserDocumentRequestVo request) {
+        AddUserDocumentRequestDto requestDto = new AddUserDocumentRequestDto();
+        BeanUtils.copyProperties(request, requestDto);
+        return esService.addDocument(requestDto.getIndex(), JSON.toJSONString(request.getUserDocumentInfo()));
     }
 
     @Override
-    public DocumentUserResponse getDocument(UserDocumentRequestVo request) {
-        return esService.getDocument(IndexConstant.VIC_INDEX);
+    public GetDocumentResponse getDocument(GetDocumentRequestVo request) {
+        GetDocumentRequestDto requestDto = new GetDocumentRequestDto();
+        BeanUtils.copyProperties(request, requestDto);
+        Map<String, Object> sourceAsMap = esService.getDocument(requestDto.getIndex(), requestDto.getId());
+        GetDocumentResponse response = new GetDocumentResponse();
+        if (sourceAsMap != null) {
+            try {
+                UserDocumentInfo userDocumentInfo = (UserDocumentInfo) MapUtils.mapToObject(sourceAsMap, UserDocumentInfo.class);
+                BeanUtils.copyProperties(userDocumentInfo, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return response;
     }
 
     @Override
-    public OrderTrendResponseVo queryGroupByData(EsOrderDataQueryVo queryVo) {
-
-//        BoolQueryBuilder boolQueryBuilder = new BoolQueryBuilder();
-//        Script script = new Script(ScriptType.INLINE, "painless", "doc['partnerId'].value+':'+doc['storeId'].value", new HashMap<>());
-//        String indexName = "freemud-order-v4-*";
-//        List<EsGroupByDataResponse> groupByDataResponseList = esOrderService.getGroupByData(boolQueryBuilder, script, EsConstant.SETTLEMENT_AMOUNT, indexName);
-//
-//        List<EsOrderInfoResponse> orderInfoResponseList = groupByDataResponseList.stream().map(t -> {
-//                    EsOrderInfoResponse esOrderInfoResponse = new EsOrderInfoResponse();
-//                    esOrderInfoResponse.setOrderAmt(t.getSettlementAmount());
-//                    esOrderInfoResponse.setOrdersNum(t.getValidOrdersNum());
-//                    esOrderInfoResponse.setKey(t.getKey());
-//                    return esOrderInfoResponse;
-//                }
-//        ).collect(Collectors.toList());
-
-        OrderTrendResponseVo responseVo = new OrderTrendResponseVo();
-//        responseVo.setEsOrderInfoResponseList(orderInfoResponseList);
-        return responseVo;
+    public Boolean isExistsDocument(IsExistsDocumentRequestVo request) {
+        IsExistsDocumentRequestDto requestDto = new IsExistsDocumentRequestDto();
+        BeanUtils.copyProperties(request, requestDto);
+        return esService.isExistsDocument(requestDto.getIndex(), requestDto.getId());
     }
+
+    @Override
+    public String deleteDocument(DeleteDocumentRequestVo request) {
+        DeleteDocumentRequestDto requestDto = new DeleteDocumentRequestDto();
+        BeanUtils.copyProperties(request, requestDto);
+        return esService.deleteDocument(requestDto.getIndex(), requestDto.getId());
+    }
+
+    @Override
+    public String updateDocument(UpdateDocumentRequestVo request) {
+        UpdateDocumentRequestDto requestDto = new UpdateDocumentRequestDto();
+        BeanUtils.copyProperties(request, requestDto);
+        return esService.updateDocument(requestDto.getIndex(), requestDto.getId(), JSON.toJSONString(request.getUserDocumentInfo()));
+    }
+
+    @Override
+    public String bulkDocument(BulkAddUserDocumentRequestDto request) {
+        BulkAddUserDocumentRequestDto requestDto = new BulkAddUserDocumentRequestDto();
+        BeanUtils.copyProperties(request, requestDto);
+
+        BulkRequest bulkRequest = new BulkRequest();
+        for (UserDocumentInfo obj : requestDto.getUserDocumentInfoList()) {
+            bulkRequest.add(new IndexRequest(requestDto.getIndex()).source(JSON.toJSONString(obj), XContentType.JSON));
+        }
+        Boolean bulkDocumentBoolean = esService.bulkDocument(bulkRequest);
+        if (bulkDocumentBoolean) {
+            return "批量添加文档失败";
+        }
+        return "批量添加文档成功";
+    }
+
 }

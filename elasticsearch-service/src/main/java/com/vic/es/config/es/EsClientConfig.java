@@ -1,4 +1,4 @@
-package com.vic.es.config;
+package com.vic.es.config.es;
 
 
 import org.apache.http.HttpHost;
@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class ElasticSearchClientConfig {
+public class EsClientConfig {
 
     @Value("${local.elasticsearch.hostName}")
     private String hostName;

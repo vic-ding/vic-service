@@ -10,11 +10,6 @@ public class MapUtils {
 
     /**
      * Map 转对象
-     *
-     * @param map
-     * @param beanClass
-     * @return
-     * @throws Exception
      */
     public static Object mapToObject(Map<String, Object> map, Class<?> beanClass) throws Exception {
         if (map == null)

@@ -1,4 +1,4 @@
-package com.vic.es.config.es.entity;
+package com.vic.es.entity;
 
 import lombok.Data;
 

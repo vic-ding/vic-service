@@ -1,4 +1,4 @@
-package com.vic.es.config.es;
+package com.vic.es.constant;
 
 public class IndexConstant {
 

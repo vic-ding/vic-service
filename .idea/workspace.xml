@@ -4,21 +4,39 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dd4513d-a91e-492b-9c8f-c1389ea617d1" name="Changes" comment="创建索引">
-      <change afterPath="$PROJECT_DIR$/common-base/src/main/java/com/vic/base/util/MapUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/es/entity/DocumentUserResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/es/entity/UserDocumentRequestVo.java" afterDir="false" />
+    <list default="true" id="6dd4513d-a91e-492b-9c8f-c1389ea617d1" name="Changes" comment="获取文档">
+      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/controller/JdController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/entity/AddUserDocumentRequestDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/entity/AddUserDocumentRequestVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/entity/BulkAddUserDocumentRequestDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/entity/BulkAddUserDocumentRequestVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/entity/DeleteDocumentRequestDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/entity/DeleteDocumentRequestVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/entity/GetDocumentRequestDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/entity/GetDocumentRequestVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/entity/IsExistsDocumentRequestDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/entity/IsExistsDocumentRequestVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/entity/UpdateDocumentRequestDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/entity/UpdateDocumentRequestVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/entity/jd/BulkAddGoodsDocumentRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/entity/jd/JdGoodsResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/service/JdService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/service/impl/JdServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/utils/HtmlParseUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/ElasticSearchClientConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/ElasticSearchClientConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/es/EsConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/es/IndexConstant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common-base/src/main/java/com/vic/base/util/MapUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/common-base/src/main/java/com/vic/base/util/MapUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/ElasticSearchClientConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/es/EsClientConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/es/EsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/es/EsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/es/entity/CreateIndexRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/es/entity/IndexRequestVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/controller/VicEsApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/controller/VicEsApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/es/IndexConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/constant/IndexConstant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/es/entity/DocumentUserResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/entity/GetDocumentResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/es/entity/EsGroupByDataResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/es/entity/IndexRequestVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/entity/IndexRequestVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/es/entity/UserDocumentRequestVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/entity/UserDocumentInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/controller/VicEsApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/controller/EsApiController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/service/EsApiService.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/service/EsApiService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/service/impl/EsApiServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/service/impl/EsApiServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/resources/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/resources/application-dev.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elasticsearch-service/target/classes/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/target/classes/application-dev.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elasticsearch-service/target/classes/com/vic/es/config/es/EsConstant.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch-service/target/classes/com/vic/es/config/es/entity/EsGroupByDataResponse.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +96,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="terminal" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="ReaderModeSettings">
     <option name="enabled" value="false" />
@@ -94,6 +112,10 @@
       <recent name="D:\workspace\vic-service\elasticsearch-service\src\main\java\com\vic\es\controller" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.vic.es.service.impl" />
+      <recent name="com.vic.es.service" />
+      <recent name="com.vic.es.entity.jd" />
+      <recent name="com.vic.es.controller" />
       <recent name="com.vic.es.config.es.entity" />
     </key>
   </component>
@@ -118,6 +140,9 @@
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpringBootOptions">
+    <option name="showAdditionalConfigNotification" value="false" />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="6dd4513d-a91e-492b-9c8f-c1389ea617d1" name="Changes" comment="" />
@@ -133,7 +158,8 @@
       <workItem from="1647865327848" duration="1328000" />
       <workItem from="1647952005135" duration="877000" />
       <workItem from="1647954009027" duration="3003000" />
-      <workItem from="1648132001927" duration="23648000" />
+      <workItem from="1648132001927" duration="25531000" />
+      <workItem from="1648290570340" duration="19924000" />
     </task>
     <task id="LOCAL-00001" summary="项目初始化">
       <created>1647826156814</created>
@@ -149,7 +175,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648221676415</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="获取文档">
+      <created>1648288624093</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1648288624093</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -169,7 +202,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="项目初始化" />
     <MESSAGE value="创建索引" />
-    <option name="LAST_COMMIT_MESSAGE" value="创建索引" />
+    <MESSAGE value="获取文档" />
+    <option name="LAST_COMMIT_MESSAGE" value="获取文档" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
