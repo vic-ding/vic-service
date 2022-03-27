@@ -36,7 +36,7 @@ public class HtmlParseUtil {
                 String shopName = el.getElementsByClass("curr-shop hd-shopname").eq(0).text();
                 String price = el.getElementsByTag("i").eq(0).text();
                 if (!"".equals(goodsName) && !"".equals(shopName) && !"".equals(price)) {
-                    contents.add(new JdGoodsResponse(goodsName, shopName, price));
+                    contents.add(new JdGoodsResponse(goodsName, shopName, Double.parseDouble(price)));
                 }
             }
         }

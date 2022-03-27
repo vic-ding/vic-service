@@ -4,6 +4,8 @@ package com.vic.es.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.vic.base.response.BaseResponse;
 import com.vic.es.entity.jd.BulkAddGoodsDocumentRequest;
+import com.vic.es.entity.jd.SearchAllRequest;
+import com.vic.es.entity.jd.SearchAllResponse;
 import com.vic.es.service.EsApiService;
 import com.vic.es.service.JdService;
 import lombok.extern.slf4j.Slf4j;
@@ -36,6 +38,19 @@ public class JdController {
             log.error("批量添加文档-失败，参数为 {}.", JSONObject.toJSONString(request));
             log.error("批量添加文档-失败，异常信息为 {}.", JSONObject.toJSONString(e));
             return BaseResponse.error("批量添加文档-失败");
+        }
+        return BaseResponse.success(response);
+    }
+
+    @PostMapping(value = "/searchAll")
+    public BaseResponse<SearchAllResponse> searchAll(@RequestBody SearchAllRequest request) {
+        SearchAllResponse response;
+        try {
+            response = jdService.searchAll(request);
+        } catch (Exception e) {
+            log.error("查询数据-失败，参数为 {}.", JSONObject.toJSONString(request));
+            log.error("查询数据-失败，异常信息为 {}.", JSONObject.toJSONString(e));
+            return BaseResponse.error("查询数据-失败");
         }
         return BaseResponse.success(response);
     }

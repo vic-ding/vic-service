@@ -14,6 +14,8 @@ import org.elasticsearch.action.get.GetRequest;
 import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.index.IndexResponse;
+import org.elasticsearch.action.search.SearchRequest;
+import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.action.support.master.AcknowledgedResponse;
 import org.elasticsearch.action.update.UpdateRequest;
 import org.elasticsearch.action.update.UpdateResponse;
@@ -23,12 +25,17 @@ import org.elasticsearch.client.indices.CreateIndexRequest;
 import org.elasticsearch.client.indices.CreateIndexResponse;
 import org.elasticsearch.client.indices.GetIndexRequest;
 import org.elasticsearch.common.xcontent.XContentType;
+import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.rest.RestStatus;
+import org.elasticsearch.search.SearchHit;
+import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -212,6 +219,33 @@ public class EsService {
         try {
             BulkResponse bulkResponse = localClient.bulk(bulkRequest, RequestOptions.DEFAULT);
             response = bulkResponse.hasFailures();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return response;
+    }
+
+    /**
+     * 根据条件查询所有数据
+     *
+     * @param index 索引名称
+     * @param query 查询条件
+     * @return List<Map < String, Object>>
+     */
+    public List<Map<String, Object>> searchAll(String index, QueryBuilder query) {
+        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+        searchSourceBuilder.query(query);
+
+        SearchRequest searchRequest = new SearchRequest(index);
+        searchRequest.source(searchSourceBuilder);
+
+        List<Map<String, Object>> response = new ArrayList<>();
+        try {
+            SearchResponse searchResponse = localClient.search(searchRequest, RequestOptions.DEFAULT);
+            for (SearchHit searchHit : searchResponse.getHits().getHits()) {
+                Map<String, Object> sourceAsMap = searchHit.getSourceAsMap();
+                response.add(sourceAsMap);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

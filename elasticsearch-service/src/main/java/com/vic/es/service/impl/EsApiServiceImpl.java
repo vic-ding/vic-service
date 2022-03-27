@@ -1,7 +1,7 @@
 package com.vic.es.service.impl;
 
 import com.alibaba.fastjson.JSON;
-import com.vic.base.util.MapUtils;
+import com.vic.base.util.CollectionUtils;
 import com.vic.es.config.es.EsService;
 import com.vic.es.entity.*;
 import com.vic.es.service.EsApiService;
@@ -53,12 +53,8 @@ public class EsApiServiceImpl implements EsApiService {
         Map<String, Object> sourceAsMap = esService.getDocument(requestDto.getIndex(), requestDto.getId());
         GetDocumentResponse response = new GetDocumentResponse();
         if (sourceAsMap != null) {
-            try {
-                UserDocumentInfo userDocumentInfo = (UserDocumentInfo) MapUtils.mapToObject(sourceAsMap, UserDocumentInfo.class);
-                BeanUtils.copyProperties(userDocumentInfo, response);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            UserDocumentInfo userDocumentInfo = (UserDocumentInfo) CollectionUtils.mapToObject(sourceAsMap, UserDocumentInfo.class);
+            BeanUtils.copyProperties(userDocumentInfo, response);
         }
         return response;
     }

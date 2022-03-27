@@ -7,8 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class JdGoodsResponse {
+public class SearchAllRequest {
     private String goodsName;
     private String shopName;
-    private Double price;
+    private String minPrice;
+    private String maxPrice;
 }

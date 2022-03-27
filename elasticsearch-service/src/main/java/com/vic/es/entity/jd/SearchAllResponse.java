@@ -4,11 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class JdGoodsResponse {
-    private String goodsName;
-    private String shopName;
-    private Double price;
+public class SearchAllResponse {
+    private List<JdGoodsResponse> goodsResponseList;
 }
