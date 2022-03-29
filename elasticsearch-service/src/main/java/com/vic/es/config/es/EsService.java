@@ -2,6 +2,7 @@ package com.vic.es.config.es;
 
 
 import com.alibaba.fastjson.JSON;
+import com.vic.es.constant.IndexConstant;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.ElasticsearchException;
 import org.elasticsearch.action.DocWriteResponse;
@@ -214,7 +215,14 @@ public class EsService {
     /**
      * 批量添加文档
      */
-    public Boolean bulkDocument(BulkRequest bulkRequest) {
+    public Boolean bulkDocument(String index,List<Map<String, Object>> mapList) {
+        BulkRequest bulkRequest = new BulkRequest();
+        if (mapList != null) {
+            for (Map<String, Object> map :mapList) {
+                bulkRequest.add(new IndexRequest(index).source(JSON.toJSONString(map), XContentType.JSON));
+            }
+        }
+
         boolean response = false;
         try {
             BulkResponse bulkResponse = localClient.bulk(bulkRequest, RequestOptions.DEFAULT);

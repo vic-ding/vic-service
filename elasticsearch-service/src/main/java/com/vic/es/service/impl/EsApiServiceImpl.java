@@ -89,10 +89,10 @@ public class EsApiServiceImpl implements EsApiService {
         for (UserDocumentInfo obj : requestDto.getUserDocumentInfoList()) {
             bulkRequest.add(new IndexRequest(requestDto.getIndex()).source(JSON.toJSONString(obj), XContentType.JSON));
         }
-        Boolean bulkDocumentBoolean = esService.bulkDocument(bulkRequest);
-        if (bulkDocumentBoolean) {
-            return "批量添加文档失败";
-        }
+//        Boolean bulkDocumentBoolean = esService.bulkDocument(bulkRequest);
+//        if (bulkDocumentBoolean) {
+//            return "批量添加文档失败";
+//        }
         return "批量添加文档成功";
     }
 
