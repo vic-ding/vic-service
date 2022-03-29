@@ -1,5 +1,6 @@
 package com.vic.es.service.impl;
 
+import com.vic.base.response.BaseResponse;
 import com.vic.es.config.es.EsService;
 import com.vic.es.constant.IndexConstant;
 import com.vic.es.entity.BulkAddDocumentRequest;
@@ -38,11 +39,16 @@ public class FmServiceImpl implements FmService {
 
 
     @Override
-    public void bulkAddDocument(BulkAddDocumentRequest request) {
+    public String bulkAddDocument(BulkAddDocumentRequest request) {
         MemberBaseQuery requestDto = new MemberBaseQuery();
         BeanUtils.copyProperties(request, requestDto);
-        MemberBaseInfoResponse memberBaseInfoResponse = fmFeignClient.searchMemberInfo(requestDto);
-        esService.bulkDocument(IndexConstant.FM_MEMBER_BASE, memberBaseInfoResponse.getMemberBase());
+        BaseResponse<MemberBaseInfoResponse> memberBaseInfoResponse = fmFeignClient.searchMemberInfo(requestDto);
+        if (memberBaseInfoResponse.getData() != null) {
+            esService.bulkDocument(IndexConstant.FM_MEMBER_BASE, memberBaseInfoResponse.getData().getMemberBase());
+            return "导入完成";
+        } else {
+            return "无数据";
+        }
     }
 
     @Override

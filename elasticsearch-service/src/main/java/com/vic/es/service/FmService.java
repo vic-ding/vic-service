@@ -7,7 +7,7 @@ import com.vic.es.entity.jd.SearchAllResponse;
 
 public interface FmService {
 
-    void bulkAddDocument(BulkAddDocumentRequest request);
+    String bulkAddDocument(BulkAddDocumentRequest request);
 
     SearchAllResponse searchAll(SearchAllRequest request);
 
