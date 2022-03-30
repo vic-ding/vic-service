@@ -4,16 +4,18 @@ package com.vic.es.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.vic.base.response.BaseResponse;
 import com.vic.es.entity.BulkAddDocumentRequest;
-import com.vic.es.entity.jd.BulkAddGoodsDocumentRequest;
-import com.vic.es.entity.jd.SearchAllRequest;
-import com.vic.es.entity.jd.SearchAllResponse;
+import com.vic.es.entity.fm.FmMemberBaseRequestVo;
+import com.vic.es.entity.fm.FmMemberBaseResponse;
 import com.vic.es.service.FmService;
+import com.vic.es.utils.PageResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 
 @RestController
@@ -32,7 +34,7 @@ public class FmController {
     @PostMapping(value = "/bulkAddDocument")
     public BaseResponse<String> bulkAddDocument(@RequestBody BulkAddDocumentRequest request) {
         try {
-             fmService.bulkAddDocument(request);
+            fmService.bulkAddDocument(request);
         } catch (Exception e) {
             log.error("批量添加文档-失败，参数为 {}.", JSONObject.toJSONString(request));
             log.error("批量添加文档-失败，异常信息为 {}.", JSONObject.toJSONString(e));
@@ -41,11 +43,11 @@ public class FmController {
         return BaseResponse.success();
     }
 
-    @PostMapping(value = "/searchAll")
-    public BaseResponse<SearchAllResponse> searchAll(@RequestBody SearchAllRequest request) {
-        SearchAllResponse response;
+    @PostMapping(value = "/search")
+    public BaseResponse<PageResult<List<FmMemberBaseResponse>>> search(@RequestBody FmMemberBaseRequestVo request) {
+        PageResult<List<FmMemberBaseResponse>> response;
         try {
-            response = fmService.searchAll(request);
+            response = fmService.search(request);
         } catch (Exception e) {
             log.error("查询数据-失败，参数为 {}.", JSONObject.toJSONString(request));
             log.error("查询数据-失败，异常信息为 {}.", JSONObject.toJSONString(e));

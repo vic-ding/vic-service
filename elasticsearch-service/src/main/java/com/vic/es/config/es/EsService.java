@@ -1,14 +1,10 @@
 package com.vic.es.config.es;
 
-
 import com.alibaba.fastjson.JSON;
-import com.vic.es.constant.IndexConstant;
-import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.ElasticsearchException;
 import org.elasticsearch.action.DocWriteResponse;
 import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest;
 import org.elasticsearch.action.bulk.BulkRequest;
-import org.elasticsearch.action.bulk.BulkResponse;
 import org.elasticsearch.action.delete.DeleteRequest;
 import org.elasticsearch.action.delete.DeleteResponse;
 import org.elasticsearch.action.get.GetRequest;
@@ -19,7 +15,6 @@ import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.action.support.master.AcknowledgedResponse;
 import org.elasticsearch.action.update.UpdateRequest;
-import org.elasticsearch.action.update.UpdateResponse;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.client.indices.CreateIndexRequest;
@@ -40,7 +35,6 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-@Slf4j
 public class EsService {
 
     private RestHighLevelClient localClient;
@@ -123,7 +117,6 @@ public class EsService {
         String response = "";
 
         IndexRequest indexRequest = new IndexRequest(index);
-        //indexRequest.id("1");
         indexRequest.source(jsonString, XContentType.JSON);
         try {
             IndexResponse indexResponse = localClient.index(indexRequest, RequestOptions.DEFAULT);
@@ -196,11 +189,9 @@ public class EsService {
         UpdateRequest updateRequest = new UpdateRequest(index, id).doc(jsonString, XContentType.JSON);
         String response = "更新文档成功";
 
-        UpdateResponse updateResponse;
         try {
             try {
-                updateResponse = localClient.update(updateRequest, RequestOptions.DEFAULT);
-                log.info("更新文档成功,详细信息为 {}", JSON.toJSONString(updateResponse));
+                localClient.update(updateRequest, RequestOptions.DEFAULT);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -215,49 +206,58 @@ public class EsService {
     /**
      * 批量添加文档
      */
-    public Boolean bulkDocument(String index,List<Map<String, Object>> mapList) {
+    public void bulkDocument(String index, List<Map<String, Object>> mapList) {
         BulkRequest bulkRequest = new BulkRequest();
         if (mapList != null) {
-            for (Map<String, Object> map :mapList) {
+            for (Map<String, Object> map : mapList) {
                 bulkRequest.add(new IndexRequest(index).source(JSON.toJSONString(map), XContentType.JSON));
             }
         }
 
-        boolean response = false;
         try {
-            BulkResponse bulkResponse = localClient.bulk(bulkRequest, RequestOptions.DEFAULT);
-            response = bulkResponse.hasFailures();
+            localClient.bulk(bulkRequest, RequestOptions.DEFAULT);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return response;
     }
 
     /**
-     * 根据条件查询所有数据
+     * 条件查询并分页
      *
-     * @param index 索引名称
-     * @param query 查询条件
+     * @param index        索引名称
+     * @param queryBuilder 查询条件
      * @return List<Map < String, Object>>
      */
-    public List<Map<String, Object>> searchAll(String index, QueryBuilder query) {
-        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
-        searchSourceBuilder.query(query);
+    public SearchResult search(String index, QueryBuilder queryBuilder) {
+        return this.search(index, queryBuilder, null);
+    }
 
+    public SearchResult search(String index, QueryBuilder queryBuilder, PageRequest pageRequest) {
         SearchRequest searchRequest = new SearchRequest(index);
+        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+        searchSourceBuilder.query(queryBuilder);
+        if (pageRequest != null) {
+            searchSourceBuilder.from(pageRequest.getPageIndex()).size(pageRequest.getPageSize());
+        } else {
+            searchSourceBuilder.size(10000);
+        }
         searchRequest.source(searchSourceBuilder);
 
-        List<Map<String, Object>> response = new ArrayList<>();
+        SearchResult searchResult = new SearchResult();
+        List<Map<String, Object>> mapList = new ArrayList<>();
         try {
             SearchResponse searchResponse = localClient.search(searchRequest, RequestOptions.DEFAULT);
+            Integer total = (int)(searchResponse.getHits().getTotalHits().value);
             for (SearchHit searchHit : searchResponse.getHits().getHits()) {
                 Map<String, Object> sourceAsMap = searchHit.getSourceAsMap();
-                response.add(sourceAsMap);
+                mapList.add(sourceAsMap);
             }
+            searchResult.setTotal(total);
+            searchResult.setMapList(mapList);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return response;
+        return searchResult;
     }
 
 

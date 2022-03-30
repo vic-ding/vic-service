@@ -1,14 +1,17 @@
 package com.vic.es.service;
 
 import com.vic.es.entity.BulkAddDocumentRequest;
-import com.vic.es.entity.jd.SearchAllRequest;
-import com.vic.es.entity.jd.SearchAllResponse;
+import com.vic.es.entity.fm.FmMemberBaseRequestVo;
+import com.vic.es.entity.fm.FmMemberBaseResponse;
+import com.vic.es.utils.PageResult;
+
+import java.util.List;
 
 
 public interface FmService {
 
-    String bulkAddDocument(BulkAddDocumentRequest request);
+    void bulkAddDocument(BulkAddDocumentRequest request);
 
-    SearchAllResponse searchAll(SearchAllRequest request);
+    PageResult<List<FmMemberBaseResponse>> search(FmMemberBaseRequestVo request);
 
 }

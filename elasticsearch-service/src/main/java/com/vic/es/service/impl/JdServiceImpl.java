@@ -2,6 +2,7 @@ package com.vic.es.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.vic.es.config.es.EsService;
+import com.vic.es.config.es.SearchResult;
 import com.vic.es.constant.IndexConstant;
 import com.vic.es.entity.jd.BulkAddGoodsDocumentRequest;
 import com.vic.es.entity.jd.JdGoodsResponse;
@@ -70,9 +71,9 @@ public class JdServiceImpl implements JdService {
         if (StringUtils.isNotEmpty(request.getShopName())) {
             boolQueryBuilder.must(QueryBuilders.termQuery("shopName", request.getShopName()));
         }
-        List<Map<String, Object>> objects = esService.searchAll(IndexConstant.JD_INDEX, boolQueryBuilder);
+        SearchResult searchResult = esService.search(IndexConstant.JD_INDEX, boolQueryBuilder);
 
-        List<JdGoodsResponse> goodsResponseList = objects.stream().map(this::convertToBaseRowModel).collect(Collectors.toList());
+        List<JdGoodsResponse> goodsResponseList = searchResult.getMapList().stream().map(this::convertToBaseRowModel).collect(Collectors.toList());
 
         SearchAllResponse searchAllResponse = new SearchAllResponse();
         searchAllResponse.setGoodsResponseList(goodsResponseList);

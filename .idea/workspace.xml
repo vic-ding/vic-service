@@ -4,15 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dd4513d-a91e-492b-9c8f-c1389ea617d1" name="Changes" comment="查询数据">
+    <list default="true" id="6dd4513d-a91e-492b-9c8f-c1389ea617d1" name="Changes" comment="批量添加文档">
+      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/bizUtils/ConvertMapToObj.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/es/SearchResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/constant/FmMemberBaseConstant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/entity/fm/FmMemberBaseRequestVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/entity/fm/FmMemberBaseResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/utils/PageResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/utils/PageUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/EsServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/EsServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/feign/client/FmFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/feign/client/FmFeignClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/es/EsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/es/EsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/constant/IndexConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/constant/IndexConstant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/controller/FmController.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/controller/FmController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/service/FmService.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/service/FmService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/service/impl/FmServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/service/impl/FmServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elasticsearch-service/target/classes/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/target/classes/application-dev.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elasticsearch-service/target/classes/com/vic/es/EsServiceApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/target/classes/com/vic/es/EsServiceApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/service/impl/JdServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/service/impl/JdServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,10 +34,20 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="vic-20220329" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="jar://$PROJECT_DIR$/../../maven/m2/repository/org/elasticsearch/elasticsearch/7.1.1/elasticsearch-7.1.1.jar!/org/elasticsearch/action/support/IndicesOptions.class" root0="FORCE_HIGHLIGHTING" />
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -40,7 +56,7 @@
     <option name="generalSettings">
       <MavenGeneralSettings>
         <option name="mavenHome" value="$PROJECT_DIR$/../../maven/apache-maven-3.8.5-bin/apache-maven-3.8.5" />
-        <option name="userSettingsFile" value="C:\Users\Vic-Desktop\.m2\settings.xml" />
+        <option name="useMavenConfig" value="true" />
       </MavenGeneralSettings>
     </option>
   </component>
@@ -66,15 +82,15 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="ToolWindowCommit.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="extract.method.default.visibility" value="private" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="ReaderModeSettings">
     <option name="enabled" value="false" />
@@ -90,14 +106,21 @@
       <recent name="D:\workspace\vic-service\elasticsearch-service\src\main\java\com\vic\es\controller" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.vic.es.entity.jd" />
+      <recent name="com.vic.es.config.es" />
+      <recent name="com.vic.es.entity.fm" />
       <recent name="com.vic.es.service.impl" />
       <recent name="com.vic.es.service" />
       <recent name="com.vic.es.controller" />
-      <recent name="com.vic.es.config.es.entity" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.EsServiceApplication">
+    <configuration name="EsServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.vic.es.EsServiceApplication" />
+      <module name="elasticsearch-service" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="EsServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="elasticsearch-service" />
       <extension name="coverage">
@@ -113,14 +136,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.EsServiceApplication" />
+        <item itemvalue="Application.EsServiceApplication" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
-  <component name="SpringBootOptions">
-    <option name="showAdditionalConfigNotification" value="false" />
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="6dd4513d-a91e-492b-9c8f-c1389ea617d1" name="Changes" comment="" />
@@ -131,13 +151,17 @@
       <workItem from="1647701358164" duration="2659000" />
       <workItem from="1647704055406" duration="505000" />
       <workItem from="1647704577953" duration="19169000" />
-      <workItem from="1647825588639" duration="2922000" />
-      <workItem from="1647829226219" duration="1463000" />
-      <workItem from="1647865327848" duration="1328000" />
-      <workItem from="1647952005135" duration="877000" />
-      <workItem from="1647954009027" duration="3003000" />
-      <workItem from="1648132001927" duration="25531000" />
-      <workItem from="1648290570340" duration="34337000" />
+      <workItem from="1647825588639" duration="1284000" />
+      <workItem from="1647861702722" duration="566000" />
+      <workItem from="1647862300722" duration="33000" />
+      <workItem from="1647862352961" duration="151000" />
+      <workItem from="1647862529707" duration="725000" />
+      <workItem from="1648018933982" duration="345000" />
+      <workItem from="1648027640249" duration="647000" />
+      <workItem from="1648429596399" duration="2931000" />
+      <workItem from="1648438694213" duration="700000" />
+      <workItem from="1648518149454" duration="5005000" />
+      <workItem from="1648543536785" duration="17120000" />
     </task>
     <task id="LOCAL-00001" summary="项目初始化">
       <created>1647826156814</created>
@@ -146,35 +170,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647826156814</updated>
     </task>
-    <task id="LOCAL-00002" summary="创建索引">
-      <created>1648221676415</created>
+    <task id="LOCAL-00002" summary="批量添加文档">
+      <created>1648524208008</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1648221676415</updated>
+      <updated>1648524208008</updated>
     </task>
-    <task id="LOCAL-00003" summary="获取文档">
-      <created>1648288624093</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1648288624093</updated>
-    </task>
-    <task id="LOCAL-00004" summary="获取文档">
-      <created>1648373245833</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1648373245833</updated>
-    </task>
-    <task id="LOCAL-00005" summary="查询数据">
-      <created>1648390803089</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1648390803089</updated>
-    </task>
-    <option name="localTasksCounter" value="6" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,18 +196,11 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="项目初始化" />
-    <MESSAGE value="创建索引" />
-    <MESSAGE value="获取文档" />
-    <MESSAGE value="查询数据" />
-    <option name="LAST_COMMIT_MESSAGE" value="查询数据" />
+    <MESSAGE value="批量添加文档" />
+    <option name="LAST_COMMIT_MESSAGE" value="批量添加文档" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/vic_service$EsServiceApplication.ic" NAME="EsServiceApplication Coverage Results" MODIFIED="1648263291811" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>com.vic.es.*</FILTER>
-    </SUITE>
   </component>
 </project>
