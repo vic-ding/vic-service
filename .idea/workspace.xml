@@ -5,20 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6dd4513d-a91e-492b-9c8f-c1389ea617d1" name="Changes" comment="批量添加文档">
-      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/bizUtils/ConvertMapToObj.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/es/SearchResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/constant/FmMemberBaseConstant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/entity/fm/FmMemberBaseRequestVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/entity/fm/FmMemberBaseResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/utils/PageResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/utils/PageUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/es/EsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/config/es/EsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/constant/IndexConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/constant/IndexConstant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/controller/FmController.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/controller/FmController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/service/FmService.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/service/FmService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/service/impl/FmServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/service/impl/FmServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/service/impl/JdServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch-service/src/main/java/com/vic/es/service/impl/JdServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
